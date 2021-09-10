@@ -14,11 +14,11 @@ def getBoard(rate):
 	],sample_rate=rate)
 	return pb
 	
-def writeFx(fx,wav,osr,dest):
+def writeFx(fx,wav,rate,dest):
 	result = fx(wav)
-	print('Output Sample Rate: '+str(osr)+' Hz')
+	print('Output Sample Rate: '+str(rate)+' Hz')
 	print('\t-> Writing effected audio to \''+dest+'\'')
-	with sf.SoundFile(dest,'w',samplerate=osr,channels=len(result.shape)) as f:
+	with sf.SoundFile(dest,'w',samplerate=rate,channels=len(result.shape)) as f:
 		f.write(result)
 	
 if __name__ == '__main__':
